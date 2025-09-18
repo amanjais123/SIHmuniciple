@@ -5,6 +5,8 @@ const SignIn = ({ onSignIn }) => {
   const [userId, setUserId] = useState("");
   const [loading, setLoading] = useState(false);
 
+  const API_URL = import.meta.env.VITE_API_URL ;
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (userId.trim() === "") {
@@ -14,7 +16,7 @@ const SignIn = ({ onSignIn }) => {
 
     try {
       setLoading(true);
-      const res = await axios.post("http://localhost:3000/api/users/check", {
+      const res = await axios.post(`${API_URL}/api/users/check`, {
         userId,
       });
 
@@ -58,21 +60,14 @@ const SignIn = ({ onSignIn }) => {
             fontWeight: "bold",
             marginBottom: "24px",
             textAlign: "center",
-            color: "#FFFFF",
+            color: "#FFF",
           }}
         >
           Sign In
         </h1>
         <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
           <div style={{ display: "flex", flexDirection: "column" }}>
-            <label
-              htmlFor="userId"
-              style={{
-                marginBottom: "8px",
-                fontWeight: "600",
-                color: "#FF8C00",
-              }}
-            >
+            <label htmlFor="userId" style={{ marginBottom: "8px", fontWeight: "600", color: "#FF8C00" }}>
               User ID
             </label>
             <input
