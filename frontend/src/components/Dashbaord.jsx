@@ -45,7 +45,8 @@ function Dashboard() {
 useEffect(() => {
   const fetchBins = async () => {
     try {
-      const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/bins`);
+      const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
+      const res = await axios.get(`${API_URL}/api/bins`);
       setBinsData(res.data.data);
     } catch (err) {
       console.error('Error fetching bins:', err);
@@ -55,6 +56,7 @@ useEffect(() => {
   };
   fetchBins();
 }, []);
+
   return (
     <div style={{ minHeight: '100vh', background: 'linear-gradient(135deg, #20242D 60%, #171923 100%)', color: '#EEE', fontFamily: 'Poppins, Arial, sans-serif' }}>
       {/* Header */}
