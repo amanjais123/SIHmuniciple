@@ -6,6 +6,20 @@ import {
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 
+// ✅ Import leaflet icons fix
+import L from "leaflet";
+import markerIcon2x from "leaflet/dist/images/marker-icon-2x.png";
+import markerIcon from "leaflet/dist/images/marker-icon.png";
+import markerShadow from "leaflet/dist/images/marker-shadow.png";
+
+// Fix default marker icon issue in React/Vite
+delete L.Icon.Default.prototype._getIconUrl;
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: markerIcon2x,
+  iconUrl: markerIcon,
+  shadowUrl: markerShadow,
+});
+
 const wasteTypes = [
   { type: 'Bio Degradable', value: 61 },
   { type: 'Non Bio Degradable', value: 39 },
@@ -38,24 +52,23 @@ function Dashboard() {
   const sampleBins = [
     { _id: "BIN001", Id: "BIN001", Location: "Sector 12, Street 7", lat: 26.7606, lng: 83.3732 },
     { _id: "BIN002", Id: "BIN002", Location: "Sector 14, Street 3", lat: 26.7615, lng: 83.3750 },
-     { _id: "BIN003", Id: "BIN003", Location: "Sector 11, Street 2", lat: 26.7506, lng: 83.3792 },
-
+    { _id: "BIN003", Id: "BIN003", Location: "Sector 11, Street 2", lat: 26.7506, lng: 83.3792 },
   ];
 
-useEffect(() => {
-  const fetchBins = async () => {
-    try {
-      const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
-      const res = await axios.get(`${API_URL}/api/bins`);
-      setBinsData(res.data.data);
-    } catch (err) {
-      console.error('Error fetching bins:', err);
-    } finally {
-      setLoading(false);
-    }
-  };
-  fetchBins();
-}, []);
+  useEffect(() => {
+    const fetchBins = async () => {
+      try {
+        const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
+        const res = await axios.get(`${API_URL}/api/bins`);
+        setBinsData(res.data.data);
+      } catch (err) {
+        console.error('Error fetching bins:', err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchBins();
+  }, []);
 
   return (
     <div style={{ minHeight: '100vh', background: 'linear-gradient(135deg, #20242D 60%, #171923 100%)', color: '#EEE', fontFamily: 'Poppins, Arial, sans-serif' }}>
