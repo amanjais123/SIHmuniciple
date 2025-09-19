@@ -177,11 +177,10 @@ function Dashboard() {
               </ResponsiveContainer>
             </div>
           </div>
-
           {/* Map Panel */}
           <div style={{ background: 'rgba(30,34,44,0.98)', borderRadius: 20, boxShadow: '0 2px 18px #222a', padding: 28, width: '100%', minHeight: 400 }}>
             <h3 style={{ marginBottom: 22, color: '#FF8C00', fontWeight: 500 }}>Dustbin Locations</h3>
-            <MapContainer center={[26.7606, 83.3732]} zoom={14} style={{ height: '350px', width: '100%' }}>
+            <MapContainer center={[26.727364,  83.433271]} zoom={14} style={{ height: '350px', width: '100%' }}>
               <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" attribution="&copy; OpenStreetMap contributors" />
               {sampleBins.map(bin => (
                 <Marker key={bin._id} position={[bin.lat, bin.lng]}>
