@@ -31,7 +31,7 @@ const collectionTrends = [
   { date: 'Wed', filled: 51 },
   { date: 'Thu', filled: 48 },
   { date: 'Fri', filled: 54 },
-  { date: 'Sat', filled: 34 }
+  { date: 'Sat', filled: 0 }
 ];
 
 function ArrowIcon({ open }) {
