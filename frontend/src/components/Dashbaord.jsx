@@ -50,9 +50,9 @@ function Dashboard() {
   const [loading, setLoading] = useState(true);
 
   const sampleBins = [
-    { _id: "BIN001", Id: "BIN001", Location: "Sector 12, Street 7", lat: 26.7606, lng: 83.3732 },
-    { _id: "BIN002", Id: "BIN002", Location: "Sector 14, Street 3", lat: 26.7615, lng: 83.3750 },
-    { _id: "BIN003", Id: "BIN003", Location: "Sector 11, Street 2", lat: 26.7506, lng: 83.3792 },
+    { _id: "BIN001", Id: "BIN001", Location: "MMMUT MAIN GATE", lat: 26.7298, lng: 83.4313},
+    { _id: "BIN002", Id: "BIN002", Location: "MMMUT LIBRARY", lat: 26.7303, lng:83.43302},
+    { _id: "BIN003", Id: "BIN003", Location: "MMMUT MPH", lat: 26.7318, lng: 83.4342 },
   ];
 
   useEffect(() => {
